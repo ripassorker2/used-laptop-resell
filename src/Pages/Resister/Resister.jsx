@@ -1,19 +1,74 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 
-import { Link } from "react-router-dom";
-import PrimaryButton from "../../Components/Button/PrimaryButton";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
-const Signup = () => {
+const Resister = () => {
+  const { createUser, updateUserProfile, setLoading, signInWithGoogle } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    // Image Upload
+    const image = event.target.image.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_Imgbb_key}`;
+    console.log(url);
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageInfo) => {
+        // Create User
+        createUser(email, password)
+          .then((result) => {
+            // const user = result.user;
+            // console.log(user);
+            // setAuthToken(result.user)
+            toast.success("Created user succesfully");
+
+            updateUserProfile(name, imageInfo.data.display_url)
+              .then(navigate(from, { replace: true }))
+              .catch((err) => console.log(err));
+          })
+
+          .catch((err) => {
+            console.log(err);
+            setLoading(false);
+          });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleGoogleSignin = () => {
+    signInWithGoogle().then((result) => {
+      console.log(result.user);
+      // setAuthToken(result.user)
+      navigate(from, { replace: true });
+    });
+  };
+
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Signup</h1>
-          <p className="text-sm text-gray-400">Create a new account</p>
+          <h1 className="my-3 text-4xl text-purple-500 font-bold">Signup</h1>
+          <p className="text-sm text-gray-600">Create a new account</p>
         </div>
         <form
-          noValidate=""
-          action=""
+          onSubmit={handleSubmit}
           className="space-y-12 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
@@ -26,7 +81,7 @@ const Signup = () => {
                 name="name"
                 id="name"
                 required
-                placeholder="Enter Your Name Here"
+                placeholder="Your Name "
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
@@ -52,7 +107,7 @@ const Signup = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Enter Your Email Here"
+                placeholder="Enter Your Email"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
@@ -75,12 +130,12 @@ const Signup = () => {
           </div>
           <div className="space-y-2">
             <div>
-              <PrimaryButton
+              <button
                 type="submit"
-                classes="w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100"
+                class="w-full px-8 py-3 font-semibold rounded-md bg-purple-600 hover:bg-purple-700 hover:text-white text-gray-100"
               >
                 Sign up
-              </PrimaryButton>
+              </button>
             </div>
           </div>
         </form>
@@ -92,7 +147,11 @@ const Signup = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogleSignin}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -120,7 +179,7 @@ const Signup = () => {
             </svg>
           </button>
         </div>
-        <p className="px-6 text-sm text-center text-gray-400">
+        <p className="px-6 text-sm text-center text-gray-600">
           Already have an account yet?{" "}
           <Link to="/login" className="hover:underline text-gray-600">
             Sign In
@@ -132,4 +191,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Resister;
