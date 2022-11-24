@@ -9,13 +9,11 @@ const Resister = () => {
   const { createUser, updateUserProfile, setLoading, signInWithGoogle } =
     useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
 
   const [createdEmail, setCreatedEmail] = useState("");
   const token = useToken(createdEmail);
   if (token) {
-    navigate(from, { replace: true });
+    navigate("/");
   }
 
   const handleSubmit = (event) => {
@@ -48,7 +46,7 @@ const Resister = () => {
 
             updateUserProfile(name, imageInfo.data.display_url)
               .then((data) => {
-                navigate(from, { replace: true });
+                navigate("/");
                 setLoading(false);
               })
               .catch((err) => toast.error(err.message));

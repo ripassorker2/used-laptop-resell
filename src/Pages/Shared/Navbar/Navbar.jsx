@@ -19,49 +19,39 @@ const Navbar = () => {
               className="inline-flex items-center"
             >
               <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                RESALE LAPTOP
+                USED LAPTOP
               </span>
             </a>
             <ul className=" items-center hidden space-x-8 lg:flex">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to={"/home"}
                   aria-label="Our product"
                   title="Our product"
                   className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                 >
-                  Product
-                </a>
+                  Home
+                </Link>
               </li>
               <li>
-                <a
-                  href="/"
+                <Link
+                  to={"/"}
                   aria-label="Our product"
                   title="Our product"
                   className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                 >
-                  Features
-                </a>
+                  Dashboard
+                </Link>
               </li>
               <li>
-                <a
-                  href="/"
-                  aria-label="Product pricing"
-                  title="Product pricing"
+                <Link
+                  to={"/"}
+                  aria-label="Our product"
+                  title="Our product"
                   className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                 >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  aria-label="About us"
-                  title="About us"
-                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                >
-                  About us
-                </a>
+                  Blogs
+                </Link>
               </li>
             </ul>
             <ul className=" items-center hidden space-x-8 lg:flex">

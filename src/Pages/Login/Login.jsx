@@ -5,7 +5,6 @@ import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 import useToken from "../../utilities/useToken";
 
 const Login = () => {
-  // const [userEmail, setUserEmail] = useState('')
   const { signin, setLoading, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,9 +12,9 @@ const Login = () => {
 
   const [loginEmail, setLoginEmail] = useState("");
   const token = useToken(loginEmail);
-  if (token) {
-    navigate(from, { replace: true });
-  }
+  // if (token) {
+  //   navigate(from, { replace: true });
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +25,7 @@ const Login = () => {
       .then((result) => {
         toast.success("Login successful.....!");
         setLoginEmail(result.user.email);
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         toast.error(err.message);
@@ -37,6 +37,7 @@ const Login = () => {
   const handleGoogleSignin = () => {
     signInWithGoogle().then((result) => {
       setLoginEmail(result.user.email);
+      navigate(from, { replace: true });
       toast.success("Login succesfully....!");
     });
   };

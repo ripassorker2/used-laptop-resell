@@ -1,4 +1,5 @@
 import React from "react";
+import BuyNowModal from "../BuyNowModal/BuyNowModal";
 
 const CatagoryDetailsCard = ({ catagoryDetail }) => {
   const {
@@ -52,14 +53,20 @@ const CatagoryDetailsCard = ({ catagoryDetail }) => {
             </div>
           </div>
           <div className=" border-t border-gray-300">
-            <button className="inline-block w-full bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500">
+            <label
+              htmlFor="buy-now-modal"
+              className="inline-block text-center w-full bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500"
+            >
               Buy Now
-            </button>
+            </label>
+            {/* <button className="inline-block w-full bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500">
+              Buy Now
+            </button> */}
           </div>
         </div>
-        <div className="relative w-full h-64 lg:h-auto lg:w-1/2 rounded-t lg:rounded-t-none lg:rounded-r inline-block">
+        <div className="relative w-full border-l h-64 lg:h-auto lg:w-1/2 rounded-t lg:rounded-t-none lg:rounded-r inline-block">
           <img
-            className="w-full h-full absolute inset-0 object-cover rounded-t lg:rounded-r lg:rounded-t-none"
+            className="w-full h-full absolute bg-cover inset-0 object-cover rounded-t lg:rounded-r lg:rounded-t-none"
             src={picture}
             alt="banner"
           />
@@ -74,6 +81,7 @@ const CatagoryDetailsCard = ({ catagoryDetail }) => {
                                 }`}
         </style>
       </div>
+      <BuyNowModal catagoryDetail={catagoryDetail} />
     </div>
   );
 };
