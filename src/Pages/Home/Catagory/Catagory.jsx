@@ -17,7 +17,6 @@ const Catagory = () => {
     return <Loader />;
   }
 
-  console.log(catagories);
   return (
     <div className="my-20">
       <h1 className="text-center pb-4 border-b-2 text-purple-600 font-bold md:text-5xl text-3xl">

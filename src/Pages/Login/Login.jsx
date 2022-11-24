@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
-import { setUserAndToken } from "../../utilities/setUserToken";
+import useToken from "../../utilities/useToken";
 
 const Login = () => {
   // const [userEmail, setUserEmail] = useState('')
@@ -10,6 +10,12 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  const [loginEmail, setLoginEmail] = useState("");
+  const token = useToken(loginEmail);
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,9 +25,7 @@ const Login = () => {
     signin(email, password)
       .then((result) => {
         toast.success("Login successful.....!");
-        // Get Token
-        setUserAndToken(result.user);
-        navigate(from, { replace: true });
+        setLoginEmail(result.user.email);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -32,9 +36,8 @@ const Login = () => {
 
   const handleGoogleSignin = () => {
     signInWithGoogle().then((result) => {
+      setLoginEmail(result.user.email);
       toast.success("Login succesfully....!");
-      setUserAndToken(result.user);
-      navigate(from, { replace: true });
     });
   };
 

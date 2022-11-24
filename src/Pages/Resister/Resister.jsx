@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
-import { setUserAndToken } from "../../utilities/setUserToken";
+import useToken from "../../utilities/useToken";
 
 const Resister = () => {
   const { createUser, updateUserProfile, setLoading, signInWithGoogle } =
@@ -12,14 +12,22 @@ const Resister = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const [createdEmail, setCreatedEmail] = useState("");
+  const token = useToken(createdEmail);
+  if (token) {
+    navigate(from, { replace: true });
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const name = event.target.name.value;
 
+    const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const role = event.target.role.value;
 
     // Image Upload
+
     const image = event.target.image.files[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -35,11 +43,14 @@ const Resister = () => {
         createUser(email, password)
           .then((result) => {
             const user = result.user;
-            setUserAndToken(user);
-            setLoading(false);
-            toast.success("Created user succesfully...!");
+            setCreatedEmail(user.email);
+            saveUser(name, email, role, imageInfo.data.display_url);
+
             updateUserProfile(name, imageInfo.data.display_url)
-              .then(navigate(from, { replace: true }))
+              .then((data) => {
+                navigate(from, { replace: true });
+                setLoading(false);
+              })
               .catch((err) => toast.error(err.message));
           })
           .catch((err) => {
@@ -53,13 +64,36 @@ const Resister = () => {
   const handleGoogleSignin = () => {
     signInWithGoogle().then((result) => {
       toast.success("Login succesfully ...!");
-      setUserAndToken(result.user);
-      navigate(from, { replace: true });
+      setCreatedEmail(result.user.email);
     });
   };
 
+  const saveUser = (name, email, role, image) => {
+    const user = {
+      name: name,
+      email: email,
+      role: role,
+      image: image,
+    };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Created user succesfully...!");
+        }
+        setCreatedEmail(email);
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
-    <div className="flex justify-center items-center pt-8">
+    <div className="flex justify-center items-center py-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl text-purple-500 font-bold">Signup</h1>
@@ -71,7 +105,7 @@ const Resister = () => {
         >
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block mb-2 text-sm">
+              <label htmlFor="name" className="block mb-2 text-sm">
                 Name
               </label>
               <input
@@ -111,6 +145,21 @@ const Resister = () => {
               />
             </div>
             <div>
+              <label htmlFor="email" className="block mb-2 text-sm">
+                Select profile type
+              </label>
+              <select
+                name="role"
+                className="select select-bordered  bg-gray-200 focus:outline-green-500 text-gray-900 w-full "
+              >
+                <option disabled selected>
+                  Select profile type
+                </option>
+                <option>Seller</option>
+                <option>Buyer</option>
+              </select>
+            </div>
+            <div>
               <div className="flex justify-between mb-2">
                 <label htmlFor="password" className="text-sm">
                   Password
@@ -126,15 +175,14 @@ const Resister = () => {
               />
             </div>
           </div>
-          <div className="space-y-2">
-            <div>
-              <button
-                type="submit"
-                className="w-full px-8 py-3 font-semibold rounded-md bg-purple-600 hover:bg-purple-700 hover:text-white text-gray-100"
-              >
-                Sign up
-              </button>
-            </div>
+
+          <div className="">
+            <button
+              type="submit"
+              className="w-full px-8 py-3 font-semibold rounded-md bg-purple-600 hover:bg-purple-700 hover:text-white text-gray-100"
+            >
+              Sign up
+            </button>
           </div>
         </form>
         <div className="flex items-center pt-4 space-x-1">
