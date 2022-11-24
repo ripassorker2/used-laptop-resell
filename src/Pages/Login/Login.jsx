@@ -1,8 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
-// import PrimaryButton from "../../Components/Button/PrimaryButton";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import { setUserAndToken } from "../../utilities/setUserToken";
 
 const Login = () => {
+  // const [userEmail, setUserEmail] = useState('')
+  const { signin, setLoading, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    signin(email, password)
+      .then((result) => {
+        toast.success("Login successful.....!");
+        // Get Token
+        setUserAndToken(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        console.log(err);
+        setLoading(false);
+      });
+  };
+
+  const handleGoogleSignin = () => {
+    signInWithGoogle().then((result) => {
+      toast.success("Login succesfully....!");
+      setUserAndToken(result.user);
+      navigate(from, { replace: true });
+    });
+  };
+
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-6 rounded-md border sm:p-10 bg-gray-100 text-gray-900">
@@ -13,8 +48,7 @@ const Login = () => {
           </p>
         </div>
         <form
-          noValidate=""
-          action=""
+          onSubmit={handleSubmit}
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
@@ -52,7 +86,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              class="w-full px-8 py-3 font-semibold rounded-md bg-purple-600 hover:bg-purple-700 hover:text-white text-gray-100"
+              className="w-full px-8 py-3 font-semibold rounded-md bg-purple-600 hover:bg-purple-700 hover:text-white text-gray-100"
             >
               Sign in
             </button>
@@ -70,7 +104,10 @@ const Login = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <div className="flex justify-center space-x-4">
+        <div
+          onClick={handleGoogleSignin}
+          className="flex justify-center space-x-4"
+        >
           <button aria-label="Log in with Google" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"

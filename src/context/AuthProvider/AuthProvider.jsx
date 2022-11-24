@@ -16,7 +16,7 @@ import app from "../../Firebase/Firebase.init";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
-console.log(auth);
+// console.log(auth);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
   //  Logout
   const logout = () => {
     setLoading(true);
-    localStorage.removeItem("aircnc-token");
+    // localStorage.removeItem("aircnc-token");
     return signOut(auth);
   };
 

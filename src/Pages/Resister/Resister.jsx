@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import { setUserAndToken } from "../../utilities/setUserToken";
 
 const Resister = () => {
   const { createUser, updateUserProfile, setLoading, signInWithGoogle } =
@@ -23,7 +24,6 @@ const Resister = () => {
     const formData = new FormData();
     formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_Imgbb_key}`;
-    console.log(url);
 
     fetch(url, {
       method: "POST",
@@ -34,28 +34,26 @@ const Resister = () => {
         // Create User
         createUser(email, password)
           .then((result) => {
-            // const user = result.user;
-            // console.log(user);
-            // setAuthToken(result.user)
-            toast.success("Created user succesfully");
-
+            const user = result.user;
+            setUserAndToken(user);
+            setLoading(false);
+            toast.success("Created user succesfully...!");
             updateUserProfile(name, imageInfo.data.display_url)
               .then(navigate(from, { replace: true }))
-              .catch((err) => console.log(err));
+              .catch((err) => toast.error(err.message));
           })
-
           .catch((err) => {
-            console.log(err);
+            toast.error(err.message);
             setLoading(false);
           });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
 
   const handleGoogleSignin = () => {
     signInWithGoogle().then((result) => {
-      console.log(result.user);
-      // setAuthToken(result.user)
+      toast.success("Login succesfully ...!");
+      setUserAndToken(result.user);
       navigate(from, { replace: true });
     });
   };
@@ -132,7 +130,7 @@ const Resister = () => {
             <div>
               <button
                 type="submit"
-                class="w-full px-8 py-3 font-semibold rounded-md bg-purple-600 hover:bg-purple-700 hover:text-white text-gray-100"
+                className="w-full px-8 py-3 font-semibold rounded-md bg-purple-600 hover:bg-purple-700 hover:text-white text-gray-100"
               >
                 Sign up
               </button>
