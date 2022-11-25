@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import Main from "../../Layout/Main/Main";
+import Blogs from "../../Pages/Blogs/Blogs";
 import AllBuyer from "../../Pages/Dashboard/AdminPanel/AllBuyer/AllBuyer";
 import AllSeller from "../../Pages/Dashboard/AdminPanel/AllSeller/AllSeller";
 import MyOrders from "../../Pages/Dashboard/BuyerPanel/MyOrders/MyOrders";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import AddProduct from "../../Pages/Dashboard/SellerPanel/AdProduct/AddProduct";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import CatagoryDetails from "../../Pages/Home/Catagory/CatagoryDetails/CatagoryDetails";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -16,6 +18,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/home", element: <Home /> },
@@ -30,6 +33,10 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/products/${params?.catagory}`),
       },
       {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
@@ -41,6 +48,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
+    errorElement: <ErrorPage />,
     element: (
       <PrivetRouter>
         <DashboardLayout />
