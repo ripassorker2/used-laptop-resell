@@ -1,87 +1,92 @@
 import React from "react";
-import BuyNowModal from "../BuyNowModal/BuyNowModal";
+// import BuyNowModal from "../BuyNowModal/BuyNowModal";
 
-const CatagoryDetailsCard = ({ catagoryDetail }) => {
+const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
   const {
-    picture,
+    productName,
+    description,
+    productImage,
     resalePrice,
-    orginalPrice,
-    catagory,
+    price,
+    purchesYear,
+    useTime,
     location,
     date,
+    time,
     sellerName,
-    name,
     sellerImg,
   } = catagoryDetail;
+  console.log(catagoryDetail);
   return (
-    <div className="my-11 mb-16">
-      <div className="flex flex-col-reverse lg:flex-row w-full bg-white dark:bg-gray-800 shadow rounded border">
-        <div className="w-full lg:w-1/2">
-          <div className="pt-4 lg:pt-6 pb-4 lg:pb-6 pl-4 lg:pl-6 pr-4 lg:pr-6">
-            <div className="flex justify-between items-center lg:items-start flex-row-reverse lg:flex-col">
-              <h4 className="text-base text-indigo-700 dark:text-indigo-600 tracking-normal leading-4">
-                12:00pm
-              </h4>
-              <h4 className="lg:mt-3 text-gray-600 dark:text-gray-400 text-base font-normal">
-                23 December, Sunday
-              </h4>
-            </div>
-            <h2 className="text-purple-600 dark:text-gray-100  mt-3 tracking-normal text-lg lg:text-2xl font-semibold">
-              {name}
-            </h2>
-            <h2 className="text-gray-800 dark:text-gray-100 mt-4 mb-2 tracking-normal text-base  font-semibold">
-              Brand : {catagory}
-            </h2>
-            <h2 className="text-gray-800 dark:text-gray-100  tracking-normal text-base  font-semibold">
-              Orginal price : ${orginalPrice}
-            </h2>
+    <div className="my-11 mb-16 border-2">
+      <div class="max-w-2xl overflow-hidden bg-white shadow-xl rounded-lg dark:bg-gray-800">
+        <img
+          class="object-cover w-full h-72 border"
+          src={productImage}
+          alt="Article"
+        />
 
-            <h2 className="text-gray-800 dark:text-gray-100 mt-4 mb-2 tracking-normal text-base  font-semibold">
-              Resale price : ${resalePrice}
-            </h2>
-            <p className="mb-6 text-base font-semibold text-gray-600 dark:text-gray-400  tracking-normal w-11/12 lg:w-9/12">
-              Location : {location}
+        <div class="p-6">
+          <div>
+            <h3 class="block mt-2 text-xl font-semibold text-purple-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 ">
+              {productName}
+            </h3>
+
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-base text-gray-700">Resale Price : </span>$
+              {resalePrice}
             </p>
-            <div className="flex  items-start ">
-              <img src={sellerImg} alt="" className="h-11 w-11 rounded-full" />
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-base">Orginal Price : </span>${price}
+            </p>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-base">Description :</span>{" "}
+              {description.length > 150
+                ? description.slice(0, 150) + "....."
+                : description}
+            </p>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-base">Location : </span>
+              {location}
+            </p>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-base">Used Time :</span> {useTime}
+            </p>
 
-              <div className="mt-4  ">
-                <p className="text-gray-600 dark:text-gray-400 ml-4 text-base tracking-normal font-semibold text-center">
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-base">Purchase Date : </span>
+              {purchesYear}
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <div class="flex items-center">
+              <div class="flex items-center">
+                <img
+                  class="object-cover h-10 rounded-full"
+                  src={sellerImg}
+                  alt=""
+                />
+                <p class="mx-2 font-semibold text-gray-700 dark:text-gray-200">
                   {sellerName}
                 </p>
               </div>
+              <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">
+                {date} and Time : {time}
+              </span>
+            </div>
+            <div className="flex justify-end items-end">
+              <label
+                htmlFor="buy-now-modal"
+                onClick={() => setCatagoryDetailInfo(catagoryDetail)}
+                className="inline-block text-center rounded-md  bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500"
+              >
+                Buy Now
+              </label>
             </div>
           </div>
-          <div className=" border-t border-gray-300">
-            <label
-              htmlFor="buy-now-modal"
-              className="inline-block text-center w-full bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500"
-            >
-              Buy Now
-            </label>
-            {/* <button className="inline-block w-full bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500">
-              Buy Now
-            </button> */}
-          </div>
         </div>
-        <div className="relative w-full border-l h-64 lg:h-auto lg:w-1/2 rounded-t lg:rounded-t-none lg:rounded-r inline-block">
-          <img
-            className="w-full h-full absolute bg-cover inset-0 object-cover rounded-t lg:rounded-r lg:rounded-t-none"
-            src={picture}
-            alt="banner"
-          />
-        </div>
-
-        <style>
-          {` .checkbox:checked {
-                                    border: none;
-                                }
-                                .checkbox:checked + .check-icon {
-                                    display: flex;
-                                }`}
-        </style>
       </div>
-      <BuyNowModal catagoryDetail={catagoryDetail} />
     </div>
   );
 };

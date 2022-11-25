@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../../context/AuthProvider/AuthProvider";
 
-const BuyNowModal = ({ catagoryDetail }) => {
+const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
   const { user } = useContext(AuthContext);
 
-  const { name, resalePrice, picture } = catagoryDetail;
+  const { productName, resalePrice, picture } = catagoryDetailInfo;
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -42,7 +42,7 @@ const BuyNowModal = ({ catagoryDetail }) => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("Buying suuccesfully.... !!");
-          //   setTreatment(null);
+          setCatagoryDetailInfo(null);
         } else {
           toast.error(data.message);
         }
@@ -91,7 +91,7 @@ const BuyNowModal = ({ catagoryDetail }) => {
             <input
               type="text"
               name="productName"
-              defaultValue={name}
+              defaultValue={productName}
               disabled
               placeholder="Email"
               required

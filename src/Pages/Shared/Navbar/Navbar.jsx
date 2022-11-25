@@ -4,7 +4,6 @@ import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  // console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div>
@@ -33,16 +32,18 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  to={"/"}
-                  aria-label="Our product"
-                  title="Our product"
-                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                >
-                  Dashboard
-                </Link>
-              </li>
+              {user?.uid && (
+                <li>
+                  <Link
+                    to={"/dashboard"}
+                    aria-label="Our product"
+                    title="Our product"
+                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   to={"/"}

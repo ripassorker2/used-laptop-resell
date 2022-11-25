@@ -12,10 +12,10 @@ const Login = () => {
 
   const [loginEmail, setLoginEmail] = useState("");
   const token = useToken(loginEmail);
-  // if (token) {
-  //   navigate(from, { replace: true });
-  // }
-
+  if (token) {
+    navigate(from, { replace: true });
+  }
+  console.log(loginEmail);
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -25,7 +25,7 @@ const Login = () => {
       .then((result) => {
         toast.success("Login successful.....!");
         setLoginEmail(result.user.email);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
       })
       .catch((err) => {
         toast.error(err.message);
