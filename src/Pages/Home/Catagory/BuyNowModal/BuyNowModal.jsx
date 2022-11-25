@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthProvider/AuthProvider";
 
 const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
   const { user } = useContext(AuthContext);
 
-  const { productName, resalePrice, picture } = catagoryDetailInfo;
+  const navigate = useNavigate();
+
+  const { productName, resalePrice, productImage } = catagoryDetailInfo;
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -14,7 +17,7 @@ const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
     const buyerPhoto = user?.photoURL;
     const buyeremail = form.email.value;
     const productName = form.productName.value;
-    const productPhoto = picture;
+    const productPhoto = productImage;
     const resalePrice = form.price.value;
     const phoneNumber = form.phone.value;
     const meetingLocation = form.location.value;
@@ -43,6 +46,7 @@ const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
         if (data.acknowledged) {
           toast.success("Buying suuccesfully.... !!");
           setCatagoryDetailInfo(null);
+          navigate("/dashboard/myOrders");
         } else {
           toast.error(data.message);
         }

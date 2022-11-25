@@ -80,14 +80,14 @@ const AddProduct = () => {
   };
   return (
     <div>
-      <section class="p-6  bg-base-100 rounded-md shadow-xl my-16 md:w-[80%]  m-auto">
-        <h1 class=" md:text-5xl text-3xl text-center font-bold text-purple-800 capitalize">
+      <section className="p-6  bg-base-100 rounded-md shadow-xl my-16 md:w-[80%]  m-auto">
+        <h1 className=" md:text-5xl text-3xl text-center font-bold text-purple-800 capitalize">
           Add Product
         </h1>
         <form onSubmit={handleProduct}>
-          <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
-              <label class="text-gray-800" for="name">
+              <label className="text-gray-800" for="name">
                 Seller Name
               </label>
               <input
@@ -97,11 +97,11 @@ const AddProduct = () => {
                 disabled
                 readOnly
                 type="text"
-                class="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-300 rounded-md  focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-300 rounded-md  focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-800" for="emailAddress">
+              <label className="text-gray-800" for="emailAddress">
                 Seller Email
               </label>
               <input
@@ -111,11 +111,11 @@ const AddProduct = () => {
                 defaultValue={user?.email}
                 disabled
                 readOnly
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-800" for="product">
+              <label className="text-gray-800" for="product">
                 Product Name
               </label>
               <input
@@ -123,11 +123,11 @@ const AddProduct = () => {
                 type="text"
                 name="product"
                 placeholder="Product Name"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-800" for="price">
+              <label className="text-gray-800" for="price">
                 Resale Price
               </label>
               <input
@@ -135,11 +135,11 @@ const AddProduct = () => {
                 type="number"
                 name="price"
                 placeholder="Price"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-800" for="useTime">
+              <label className="text-gray-800" for="useTime">
                 Used Time
               </label>
               <input
@@ -147,12 +147,12 @@ const AddProduct = () => {
                 type="text"
                 name="useTime"
                 placeholder="Used time"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
 
             <div>
-              <label class="text-gray-800" for="purchase">
+              <label className="text-gray-800" for="purchase">
                 Original Price
               </label>
               <input
@@ -160,11 +160,11 @@ const AddProduct = () => {
                 type="number"
                 name="purchase"
                 placeholder="Original price"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-800" for="useTime">
+              <label className="text-gray-800" for="useTime">
                 Purches Year
               </label>
               <input
@@ -172,11 +172,11 @@ const AddProduct = () => {
                 type="date"
                 name="purchesYear"
                 placeholder="Purches Year"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-800" for="location">
+              <label className="text-gray-800" for="location">
                 Location
               </label>
               <input
@@ -184,11 +184,11 @@ const AddProduct = () => {
                 type="text"
                 name="location"
                 placeholder="Location"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-800" for="phone">
+              <label className="text-gray-800" for="phone">
                 Seller Phone Number
               </label>
               <input
@@ -196,16 +196,16 @@ const AddProduct = () => {
                 type="number"
                 name="phone"
                 placeholder="Seller Phone Number"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-800" for="quality">
+              <label className="text-gray-800" for="quality">
                 Product Quality
               </label>
               <select
                 name="quality"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500  focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500  focus:outline-none focus:ring"
               >
                 <option selected>Excellent</option>
                 <option>Good</option>
@@ -213,12 +213,12 @@ const AddProduct = () => {
               </select>
             </div>
             <div>
-              <label class="text-gray-800" for="category">
+              <label className="text-gray-800" for="category">
                 Category
               </label>
               <select
                 name="category"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500  focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500  focus:outline-none focus:ring"
               >
                 <option selected>Apple</option>
                 <option>Hp</option>
@@ -228,19 +228,19 @@ const AddProduct = () => {
             </div>
 
             <div>
-              <label class="text-gray-800" for="photo">
+              <label className="text-gray-800" for="photo">
                 Photo
               </label>
               <input
                 id="photo"
                 type="file"
                 name="productPhoto"
-                class="block w-full px-4 py-1.5 mt-2 text-gray-700 bg-white border rounded-md     border-gray-600 focus:border-blue-400   focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                className="block w-full px-4 py-1.5 mt-2 text-gray-700 bg-white border rounded-md     border-gray-600 focus:border-blue-400   focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
           </div>
           <div>
-            <label class="text-gray-800" for="passwordConfirmation">
+            <label className="text-gray-800" for="passwordConfirmation">
               Description
             </label>
             <textarea
@@ -248,13 +248,13 @@ const AddProduct = () => {
               type="textarea"
               name="description"
               placeholder="Description"
-              class="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 focus:outline-none focus:ring"
             ></textarea>
           </div>
-          <div class="flex justify-center mt-6">
+          <div className="flex justify-center mt-6">
             <button
               type="submit"
-              class="block w-full rounded bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500 sm:w-auto"
+              className="block w-full rounded bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500 sm:w-auto"
             >
               Save
             </button>
