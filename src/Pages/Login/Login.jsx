@@ -15,7 +15,7 @@ const Login = () => {
   if (token) {
     navigate(from, { replace: true });
   }
-  console.log(loginEmail);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -29,7 +29,6 @@ const Login = () => {
       })
       .catch((err) => {
         toast.error(err.message);
-        console.log(err);
         setLoading(false);
       });
   };

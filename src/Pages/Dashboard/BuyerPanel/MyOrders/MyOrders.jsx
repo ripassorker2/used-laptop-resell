@@ -12,7 +12,6 @@ const MyOrders = () => {
       );
     }
   }, [user?.email]);
-  console.log(myOrders);
 
   return (
     <div>

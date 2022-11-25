@@ -62,7 +62,7 @@ const AddProduct = () => {
           date: `${date}/${month}/${year}`,
           time: `${hour}:${minute}`,
         };
-        console.log(productInfo);
+
         fetch(`http://localhost:5000/products`, {
           method: "POST",
           headers: {
@@ -72,9 +72,8 @@ const AddProduct = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             toast.success("Product Submited successfully");
-            navigate("/");
+            navigate("/dashboard/myProduct");
           });
       });
   };
@@ -220,9 +219,8 @@ const AddProduct = () => {
                 name="category"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500  focus:outline-none focus:ring"
               >
-                <option selected>Apple</option>
+                <option>Apple</option>
                 <option>Hp</option>
-                <option>Dell</option>
                 <option>Lenovo</option>
               </select>
             </div>

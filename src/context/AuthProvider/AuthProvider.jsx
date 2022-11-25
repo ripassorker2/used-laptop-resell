@@ -16,7 +16,6 @@ import app from "../../Firebase/Firebase.init";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
-// console.log(auth);
 
 const googleProvider = new GoogleAuthProvider();
 

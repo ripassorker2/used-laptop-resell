@@ -7,6 +7,7 @@ import AllSeller from "../../Pages/Dashboard/AdminPanel/AllSeller/AllSeller";
 import MyOrders from "../../Pages/Dashboard/BuyerPanel/MyOrders/MyOrders";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import AddProduct from "../../Pages/Dashboard/SellerPanel/AdProduct/AddProduct";
+import MyProduct from "../../Pages/Dashboard/SellerPanel/MyProduct/MyProduct";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import CatagoryDetails from "../../Pages/Home/Catagory/CatagoryDetails/CatagoryDetails";
 import Home from "../../Pages/Home/Home/Home";
@@ -76,6 +77,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivetRouter>
             <AddProduct />
+          </PrivetRouter>
+        ),
+      },
+      {
+        path: "/dashboard/myProduct",
+        element: (
+          <PrivetRouter>
+            <MyProduct />
           </PrivetRouter>
         ),
       },

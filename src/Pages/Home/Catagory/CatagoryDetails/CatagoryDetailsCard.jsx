@@ -16,7 +16,6 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
     sellerName,
     sellerImg,
   } = catagoryDetail;
-  console.log(catagoryDetail);
   return (
     <div className="my-11 mb-16 border-2">
       <div className="max-w-2xl overflow-hidden bg-white shadow-xl rounded-lg dark:bg-gray-800">
@@ -34,10 +33,10 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
 
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="text-base text-gray-700">Resale Price : </span>$
-              {resalePrice}
+              {price}
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              <span className="text-base">Orginal Price : </span>${price}
+              <span className="text-base">Orginal Price : </span>${resalePrice}
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="text-base">Description :</span>{" "}

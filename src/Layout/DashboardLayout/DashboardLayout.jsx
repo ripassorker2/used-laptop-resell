@@ -72,6 +72,21 @@ const DashboardLayout = () => {
 
             {isRole === "Seller" && (
               <>
+                <Link to={"/dashboard/myProduct"}>
+                  {" "}
+                  <li
+                    className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-900 text-sm items-center gap-x-4 } `}
+                  >
+                    <RiProductHuntLine size={22} />
+                    <span
+                      className={`${
+                        !open && "hidden"
+                      } origin-left duration-200 text-lg font-semibold`}
+                    >
+                      My Products
+                    </span>
+                  </li>
+                </Link>
                 <Link to={"/dashboard/addProducts"}>
                   {" "}
                   <li
@@ -87,19 +102,6 @@ const DashboardLayout = () => {
                     </span>
                   </li>
                 </Link>
-
-                <li
-                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-900 text-sm items-center gap-x-4 } `}
-                >
-                  <RiProductHuntLine size={22} />
-                  <span
-                    className={`${
-                      !open && "hidden"
-                    } origin-left duration-200 text-lg font-semibold`}
-                  >
-                    My Products
-                  </span>
-                </li>
               </>
             )}
 

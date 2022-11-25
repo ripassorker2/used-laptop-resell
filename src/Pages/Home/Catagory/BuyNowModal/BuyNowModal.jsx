@@ -32,7 +32,6 @@ const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
       phoneNumber,
       meetingLocation,
     };
-    console.log(buyingInfo);
 
     fetch("http://localhost:5000/buying", {
       method: "POST",

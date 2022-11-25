@@ -18,7 +18,7 @@ const Bannar = () => {
                 </strong>
               </h1>
 
-              <p className="mt-4 max-w-lg sm:text-lg text-gray-200 sm:leading-relaxed">
+              <p className="mt-4 max-w-lg sm:text-base text-gray-200 sm:leading-relaxed">
                 Tourism, the act and process of spending time away from home in
                 pursuit of recreation, relaxation, and pleasure, while making
                 use of the commercial provision of services. As such, tourism is

@@ -9,20 +9,23 @@ const AllBuyer = () => {
   });
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/buyerOrSeller/${id}`, {
-      method: "DELETE",
-      // headers: {
-      //   authorization: `berarer ${localStorage.getItem("user-token")}`,
-      // },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount) {
-          toast.success("Succesfully deleted this buyer !!");
-          refetch();
-        }
+    const aggre = window.confirm("Are sure ?You want to delete this?");
+    if (aggre) {
+      fetch(`http://localhost:5000/buyerOrSeller/${id}`, {
+        method: "DELETE",
+        // headers: {
+        //   authorization: `berarer ${localStorage.getItem("user-token")}`,
+        // },
       })
-      .catch((err) => console.error(err));
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            toast.success("Succesfully deleted this buyer !!");
+            refetch();
+          }
+        })
+        .catch((err) => console.error(err));
+    }
   };
 
   return (
