@@ -9,7 +9,7 @@ const AllBuyer = () => {
   });
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/buyer/${id}`, {
+    fetch(`http://localhost:5000/buyerOrSeller/${id}`, {
       method: "DELETE",
       // headers: {
       //   authorization: `berarer ${localStorage.getItem("user-token")}`,
@@ -29,7 +29,7 @@ const AllBuyer = () => {
     <div>
       <div>
         <h1 className=" md:text-5xl mt-7 text-3xl text-center font-bold text-purple-800 capitalize">
-          My Orders
+          All Buyers
         </h1>
         {allBuyers && (
           <div className="overflow-x-auto mt-9">
@@ -50,7 +50,7 @@ const AllBuyer = () => {
                     <td>
                       <img
                         src={allBuyer?.image}
-                        className="h-16 w-20 rounded-md"
+                        className="h-16 w-16 rounded-full"
                         alt=""
                       />
                     </td>
