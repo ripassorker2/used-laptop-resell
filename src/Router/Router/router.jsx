@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import Main from "../../Layout/Main/Main";
+import AllBuyer from "../../Pages/Dashboard/AdminPanel/AllBuyer/AllBuyer";
 import MyOrders from "../../Pages/Dashboard/BuyerPanel/MyOrders/MyOrders";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import AddProduct from "../../Pages/Dashboard/SellerPanel/AdProduct/AddProduct";
@@ -66,6 +67,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivetRouter>
             <AddProduct />
+          </PrivetRouter>
+        ),
+      },
+      {
+        path: "/dashboard/allBuyers",
+        element: (
+          <PrivetRouter>
+            <AllBuyer />
           </PrivetRouter>
         ),
       },

@@ -107,30 +107,34 @@ const DashboardLayout = () => {
 
             {isRole === "Admin" && (
               <>
-                <li
-                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-900 text-sm items-center gap-x-4 } `}
-                >
-                  <FaSellsy size={22} />
-                  <span
-                    className={`${
-                      !open && "hidden"
-                    } origin-left duration-200 text-lg font-semibold`}
+                <Link to={"/dashboard/allBuyers"}>
+                  <li
+                    className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-900 text-sm items-center gap-x-4 } `}
                   >
-                    All Sellers
-                  </span>
-                </li>
-                <li
-                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-900 text-sm items-center gap-x-4 } `}
-                >
-                  <GiBuyCard size={22} />
-                  <span
-                    className={`${
-                      !open && "hidden"
-                    } origin-left duration-200 text-lg font-semibold`}
+                    <FaSellsy size={22} />
+                    <span
+                      className={`${
+                        !open && "hidden"
+                      } origin-left duration-200 text-lg font-semibold`}
+                    >
+                      All Buyers
+                    </span>
+                  </li>
+                </Link>
+                <Link to={"/dashboard/allSellers"}>
+                  <li
+                    className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-900 text-sm items-center gap-x-4 } `}
                   >
-                    All Buyers
-                  </span>
-                </li>
+                    <GiBuyCard size={22} />
+                    <span
+                      className={`${
+                        !open && "hidden"
+                      } origin-left duration-200 text-lg font-semibold`}
+                    >
+                      All Sellers
+                    </span>
+                  </li>
+                </Link>
               </>
             )}
           </ul>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../../../context/AuthProvider/AuthProvider";
-import MYOrderCard from "./MYOrderCard";
 
 const MyOrders = () => {
   const [myOrders, setMyOrders] = useState("");
