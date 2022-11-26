@@ -10,7 +10,7 @@ const CheekOutFrom = ({ productData }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
 
-  const { buyerName, resalePrice, buyeremail, _id } = productData;
+  const { buyerName, resalePrice, buyeremail, _id, productId } = productData;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -79,6 +79,7 @@ const CheekOutFrom = ({ productData }) => {
         transactionId: paymentIntent.id,
         email: buyeremail,
         buyingId: _id,
+        productId,
       };
       fetch("http://localhost:5000/payments", {
         method: "POST",

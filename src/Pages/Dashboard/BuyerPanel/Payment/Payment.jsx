@@ -4,6 +4,7 @@ import CheekOutFrom from "./CheekOutFrom";
 
 const Payment = () => {
   const productData = useLoaderData();
+  console.log(productData);
   return (
     <div>
       <h2 className="md:text-4xl text-3xl font-semibold text-center text-purple-600 mt-9 mb-6">

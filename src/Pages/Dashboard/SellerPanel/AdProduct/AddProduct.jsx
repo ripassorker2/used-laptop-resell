@@ -58,6 +58,7 @@ const AddProduct = () => {
           location,
           description,
           catagory,
+          status: "available",
           quality,
           date: `${date}/${month}/${year}`,
           time: `${hour}:${minute}`,
