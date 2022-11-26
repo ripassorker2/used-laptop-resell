@@ -16,6 +16,22 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
     sellerName,
     sellerImg,
   } = catagoryDetail;
+
+  const handleReportd = (id) => {
+    console.log(id);
+    const agree = window.confirm(
+      "Are you sure ? You want to report this product?"
+    );
+    if (agree) {
+      fetch(`http://localhost:5000/report/${id}`, {
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.error(err));
+    }
+  };
+
   return (
     <div className="my-11 mb-16 border-2">
       <div className="max-w-2xl overflow-hidden bg-white shadow-xl rounded-lg dark:bg-gray-800">
@@ -33,15 +49,15 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
 
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="text-base text-gray-700">Resale Price : </span>$
-              {price}
+              {resalePrice}
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              <span className="text-base">Orginal Price : </span>${resalePrice}
+              <span className="text-base">Orginal Price : </span>${price}
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="text-base">Description :</span>{" "}
               {description.length > 150
-                ? description.slice(0, 150) + "....."
+                ? description.slice(0, 160) + "....."
                 : description}
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
@@ -75,6 +91,12 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
               </span>
             </div>
             <div className="flex justify-end items-end">
+              <button
+                onClick={() => handleReportd(catagoryDetail?._id)}
+                className="btn btn-secondary btn-sm mr-4"
+              >
+                Report to Admin
+              </button>
               <label
                 htmlFor="buy-now-modal"
                 onClick={() => setCatagoryDetailInfo(catagoryDetail)}

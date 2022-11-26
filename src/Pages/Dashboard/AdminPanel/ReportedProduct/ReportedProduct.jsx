@@ -1,19 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { AuthContext } from "../../../../context/AuthProvider/AuthProvider";
 import Loader from "../../../../utilities/Loader";
 
-const MyProduct = () => {
-  const { user } = useContext(AuthContext);
+const ReportedProduct = () => {
   const {
-    data: myProducts = [],
+    data: reportedProducts = [],
     refetch,
     isLoading,
   } = useQuery({
-    queryKey: ["myProducts"],
+    queryKey: ["reportedProducts"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/product/${user?.email}`);
+      const res = await fetch(`http://localhost:5000/reportProduct`);
       const data = await res.json();
       return data;
     },
@@ -39,12 +37,13 @@ const MyProduct = () => {
   if (isLoading) {
     return <Loader />;
   }
+
   return (
     <div>
       <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
-        All Buyers
+        Reported Products
       </h1>
-      {myProducts && (
+      {reportedProducts && (
         <div className="overflow-x-auto mt-9">
           <table className="table w-[90%] m-auto">
             <thead>
@@ -52,34 +51,27 @@ const MyProduct = () => {
                 <th>Si No</th>
                 <th>Product Image</th>
                 <th>Product Name</th>
-                <th>Price</th>
                 <th>Status</th>
-                <th>Advertise.</th>
                 <th>Action</th>
               </tr>
             </thead>
-            {myProducts.map((myProduct, index) => (
+            {reportedProducts.map((reported, index) => (
               <tbody key={index}>
                 <tr className="hover">
                   <th>{index + 1}</th>
                   <td>
                     <img
-                      src={myProduct?.productImage}
+                      src={reported?.productImage}
                       className="h-16 w-20 border  rounded-lg"
                       alt=""
                     />
                   </td>
-                  <td> {myProduct?.productName}</td>
-                  <td> ${myProduct?.price}</td>
-                  <td> Available</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-sm">Advertise.</button>
-                  </td>
+                  <td> {reported?.productName}</td>
+                  <td className="text-red-600">{reported.report}</td>
 
                   <td>
                     <button
-                      onClick={() => handleDelete(myProduct?._id)}
+                      onClick={() => handleDelete(reported?._id)}
                       className="btn btn-sm btn-primary"
                     >
                       Delete
@@ -95,4 +87,4 @@ const MyProduct = () => {
   );
 };
 
-export default MyProduct;
+export default ReportedProduct;

@@ -6,6 +6,7 @@ import { BsCartCheckFill, BsChevronLeft } from "react-icons/bs";
 import { CgAddR } from "react-icons/cg";
 import { RiProductHuntLine } from "react-icons/ri";
 import { FaSellsy } from "react-icons/fa";
+import { MdOutlineReport } from "react-icons/md";
 import { GiBuyCard } from "react-icons/gi";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
@@ -134,6 +135,20 @@ const DashboardLayout = () => {
                       } origin-left duration-200 text-lg font-semibold`}
                     >
                       All Sellers
+                    </span>
+                  </li>
+                </Link>
+                <Link to={"/dashboard/reported"}>
+                  <li
+                    className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-900 text-sm items-center gap-x-4 } `}
+                  >
+                    <MdOutlineReport size={22} />
+                    <span
+                      className={`${
+                        !open && "hidden"
+                      } origin-left duration-200 text-lg font-semibold`}
+                    >
+                      Reported Product
                     </span>
                   </li>
                 </Link>

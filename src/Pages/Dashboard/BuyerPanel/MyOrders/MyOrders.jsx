@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthProvider/AuthProvider";
 
 const MyOrders = () => {
@@ -15,7 +16,7 @@ const MyOrders = () => {
 
   return (
     <div>
-      <h1 className=" md:text-5xl mt-7 text-3xl text-center font-bold text-purple-800 capitalize">
+      <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
         My Orders
       </h1>
       {myOrders && (
@@ -44,7 +45,21 @@ const MyOrders = () => {
                   <td> {myOrder?.productName}</td>
                   <td>${myOrder?.resalePrice}</td>
                   <td>
-                    <button className="btn btn-sm btn-primary">Pay</button>
+                    {myOrder?.paid ? (
+                      <>
+                        <button className="btn btn-sm">Paid</button>
+                      </>
+                    ) : (
+                      <>
+                        <Link
+                          to={`/dashboard/myOrders/payment/${myOrder?._id}`}
+                        >
+                          <button className="btn btn-sm btn-primary">
+                            Pay
+                          </button>
+                        </Link>
+                      </>
+                    )}
                   </td>
                 </tr>
               </tbody>

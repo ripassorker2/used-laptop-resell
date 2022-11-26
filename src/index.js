@@ -6,6 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.REACT_APP_Stripe_key);
 
 const queryClient = new QueryClient();
 
@@ -15,7 +19,9 @@ root.render(
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <Toaster />
-        <App />
+        <Elements stripe={stripePromise}>
+          <App />
+        </Elements>
       </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>

@@ -4,7 +4,9 @@ import Main from "../../Layout/Main/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import AllBuyer from "../../Pages/Dashboard/AdminPanel/AllBuyer/AllBuyer";
 import AllSeller from "../../Pages/Dashboard/AdminPanel/AllSeller/AllSeller";
+import ReportedProduct from "../../Pages/Dashboard/AdminPanel/ReportedProduct/ReportedProduct";
 import MyOrders from "../../Pages/Dashboard/BuyerPanel/MyOrders/MyOrders";
+import Payment from "../../Pages/Dashboard/BuyerPanel/Payment/Payment";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import AddProduct from "../../Pages/Dashboard/SellerPanel/AdProduct/AddProduct";
 import MyProduct from "../../Pages/Dashboard/SellerPanel/MyProduct/MyProduct";
@@ -73,6 +75,16 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/myOrders/payment/:id",
+        element: (
+          <PrivetRouter>
+            <Payment />
+          </PrivetRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/buyingPayment/${params.id}`),
+      },
+      {
         path: "/dashboard/addProducts",
         element: (
           <PrivetRouter>
@@ -101,6 +113,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivetRouter>
             <AllSeller />
+          </PrivetRouter>
+        ),
+      },
+      {
+        path: "/dashboard/reported",
+        element: (
+          <PrivetRouter>
+            <ReportedProduct />
           </PrivetRouter>
         ),
       },

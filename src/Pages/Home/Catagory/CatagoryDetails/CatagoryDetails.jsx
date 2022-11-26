@@ -9,7 +9,7 @@ const CatagoryDetails = () => {
 
   return (
     <div>
-      <h1 className=" md:text-5xl mt-8 text-3xl text-center font-bold text-purple-800 capitalize">
+      <h1 className=" md:text-4xl mt-8 text-3xl text-center font-semibold text-purple-800 capitalize">
         All Products
       </h1>
       <div className=" px-16 grid md:w-[90%] mx-auto gap-6 lg:grid-cols-2 grid-cols-1">
