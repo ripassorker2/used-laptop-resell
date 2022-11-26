@@ -7,9 +7,9 @@ const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
   const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  console.log(catagoryDetailInfo);
 
-  const { productName, resalePrice, productImage, _id } = catagoryDetailInfo;
+  const { productName, resalePrice, productImage, _id, advertise } =
+    catagoryDetailInfo;
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -33,6 +33,7 @@ const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
       phoneNumber,
       meetingLocation,
       productId: _id,
+      advertise,
     };
 
     fetch("http://localhost:5000/buying", {

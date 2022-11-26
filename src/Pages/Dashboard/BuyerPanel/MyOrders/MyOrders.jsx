@@ -17,7 +17,7 @@ const MyOrders = () => {
   return (
     <div>
       <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
-        My Orders
+        {myOrders.length ? " My Orders" : "There Are No Orders Available !!"}
       </h1>
       {myOrders && (
         <div className="overflow-x-auto mt-9">

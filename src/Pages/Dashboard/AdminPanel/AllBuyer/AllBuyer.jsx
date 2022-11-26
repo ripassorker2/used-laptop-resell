@@ -32,7 +32,9 @@ const AllBuyer = () => {
     <div>
       <div>
         <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
-          All Buyers
+          {allBuyers.length
+            ? " All Buyers"
+            : "There Are No Buyers Available !!"}
         </h1>
         {allBuyers && (
           <div className="overflow-x-auto mt-9">

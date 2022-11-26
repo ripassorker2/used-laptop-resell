@@ -57,6 +57,7 @@ const AddProduct = () => {
           resalePrice: price,
           location,
           description,
+          advertise: false,
           catagory,
           status: "available",
           quality,

@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { TiTick } from "react-icons/ti";
 
 const AllSeller = () => {
   const { data: allSellers = [], refetch } = useQuery({
@@ -29,12 +30,29 @@ const AllSeller = () => {
     }
   };
 
+  const handleVerified = (id) => {
+    // console.log(id);
+    fetch(`http://localhost:5000/verify/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Seller verify succesfully ..!!");
+          refetch();
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       {" "}
       <div>
         <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
-          All Sellers
+          {allSellers.length
+            ? " All Sellers"
+            : "There Are No Sellers Available !!"}
         </h1>
         {allSellers && (
           <div className="overflow-x-auto mt-9">
@@ -45,6 +63,7 @@ const AllSeller = () => {
                   <th>Seller Image</th>
                   <th>Seller Name</th>
                   <th>Email</th>
+                  <th>Verificaton</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -59,8 +78,35 @@ const AllSeller = () => {
                         alt=""
                       />
                     </td>
-                    <td> {allSeller?.name}</td>
+                    <td>
+                      {" "}
+                      {allSeller?.name}{" "}
+                      {allSeller.verify && (
+                        <TiTick
+                          size={19}
+                          className="text-blue-600 border-slate-400 border-2 rounded-full inline-block"
+                        />
+                      )}
+                    </td>
                     <td>{allSeller?.email}</td>
+                    <td>
+                      {allSeller?.verify ? (
+                        <>
+                          <button className="btn btn-sm btn-disabled">
+                            Verified
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            onClick={() => handleVerified(allSeller?._id)}
+                            className="btn btn-sm btn-primary"
+                          >
+                            Verify
+                          </button>
+                        </>
+                      )}
+                    </td>
                     <td>
                       <button
                         onClick={() => handleDelete(allSeller?._id)}

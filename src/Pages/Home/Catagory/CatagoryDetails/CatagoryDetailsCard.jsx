@@ -1,5 +1,4 @@
 import React from "react";
-// import BuyNowModal from "../BuyNowModal/BuyNowModal";
 
 const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
   const {

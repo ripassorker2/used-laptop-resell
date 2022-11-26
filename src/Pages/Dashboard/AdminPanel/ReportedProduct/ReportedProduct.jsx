@@ -42,6 +42,9 @@ const ReportedProduct = () => {
     <div>
       <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
         Reported Products
+        {reportedProducts.length
+          ? " Reported Products"
+          : "There Are No Reported Products Available !!"}
       </h1>
       {reportedProducts && (
         <div className="overflow-x-auto mt-9">

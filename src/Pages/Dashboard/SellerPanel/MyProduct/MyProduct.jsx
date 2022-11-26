@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../../context/AuthProvider/AuthProvider";
@@ -36,13 +36,25 @@ const MyProduct = () => {
     }
   };
 
+  const advertice = (advertiseId) => {
+    console.log(advertiseId);
+    fetch(`http://localhost:5000/advertise/${advertiseId}`, {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  };
+
   if (isLoading) {
     return <Loader />;
   }
   return (
     <div>
       <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
-        All Buyers
+        {myProducts.length
+          ? " My Products"
+          : "There Are No Product Available !!"}
       </h1>
       {myProducts && (
         <div className="overflow-x-auto mt-9">
@@ -71,12 +83,19 @@ const MyProduct = () => {
                   </td>
                   <td> {myProduct?.productName}</td>
                   <td> ${myProduct?.price}</td>
-                  <td> Available</td>
+                  <td className="capitalize"> {myProduct.status}</td>
                   <td>
-                    {" "}
-                    <button className="btn btn-sm">Advertise.</button>
+                    {myProduct?.status === "available" ? (
+                      <button
+                        onClick={() => advertice(myProduct?._id)}
+                        className="btn btn-sm"
+                      >
+                        Advertise
+                      </button>
+                    ) : (
+                      <h3 className="">Already Sold</h3>
+                    )}
                   </td>
-
                   <td>
                     <button
                       onClick={() => handleDelete(myProduct?._id)}

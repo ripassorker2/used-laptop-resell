@@ -10,8 +10,9 @@ const CheekOutFrom = ({ productData }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
 
-  const { buyerName, resalePrice, buyeremail, _id, productId } = productData;
-
+  const { buyerName, resalePrice, buyeremail, _id, productId, advertise } =
+    productData;
+  console.log(productData);
   const stripe = useStripe();
   const elements = useElements();
 
@@ -80,6 +81,7 @@ const CheekOutFrom = ({ productData }) => {
         email: buyeremail,
         buyingId: _id,
         productId,
+        advertise,
       };
       fetch("http://localhost:5000/payments", {
         method: "POST",
