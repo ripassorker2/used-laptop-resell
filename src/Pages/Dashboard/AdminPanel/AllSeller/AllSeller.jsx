@@ -7,7 +7,11 @@ const AllSeller = () => {
   const { data: allSellers = [], refetch } = useQuery({
     queryKey: ["allBuyers"],
     queryFn: () =>
-      fetch(`http://localhost:5000/allSellers`).then((res) => res.json()),
+      fetch(`http://localhost:5000/allSellers`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("user-token")}`,
+        },
+      }).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
@@ -15,9 +19,9 @@ const AllSeller = () => {
     if (aggre) {
       fetch(`http://localhost:5000/buyerOrSeller/${id}`, {
         method: "DELETE",
-        // headers: {
-        //   authorization: `berarer ${localStorage.getItem("user-token")}`,
-        // },
+        headers: {
+          authorization: `berarer ${localStorage.getItem("user-token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {
@@ -33,6 +37,9 @@ const AllSeller = () => {
   const handleVerified = (id) => {
     fetch(`http://localhost:5000/verify/${id}`, {
       method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("user-token")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

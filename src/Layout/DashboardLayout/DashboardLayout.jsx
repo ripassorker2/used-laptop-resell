@@ -15,19 +15,8 @@ import Loader from "../../utilities/Loader";
 const DashboardLayout = () => {
   const [open, setOpen] = useState(true);
   const { user } = useContext(AuthContext);
-  // const [isRole, setRole] = useState("");
-
-  // useEffect(() => {
-  //   if (user?.email) {
-  //     fetch(`http://localhost:5000/users/${user?.email}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setRole(data?.role);
-  //       });
-  //   }
-  // }, [user?.email]);
   const [isRole, isLoadingRole] = useRole(user?.email);
-  console.log(isRole);
+
   if (isLoadingRole) {
     return <Loader />;
   }

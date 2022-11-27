@@ -5,7 +5,11 @@ const AllBuyer = () => {
   const { data: allBuyers = [], refetch } = useQuery({
     queryKey: ["allBuyers"],
     queryFn: () =>
-      fetch(`http://localhost:5000/allBuyers`).then((res) => res.json()),
+      fetch(`http://localhost:5000/allBuyers`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("user-token")}`,
+        },
+      }).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
@@ -13,9 +17,9 @@ const AllBuyer = () => {
     if (aggre) {
       fetch(`http://localhost:5000/buyerOrSeller/${id}`, {
         method: "DELETE",
-        // headers: {
-        //   authorization: `berarer ${localStorage.getItem("user-token")}`,
-        // },
+        headers: {
+          authorization: `berarer ${localStorage.getItem("user-token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {

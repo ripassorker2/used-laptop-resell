@@ -4,18 +4,21 @@ import { Link } from "react-router-dom";
 const CatagoryCard = ({ catagory }) => {
   return (
     <div>
-      <div className="shadow-lg w-[350px] ">
-        <div className=" border  px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
+      <div class="group relative shadow-lg border cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+        <div class="h-96 w-72">
           <img
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
             src={catagory?.picture}
             alt=""
-            className="rounded-lg border h-44 w-full "
           />
-          <h2 className="title-font font-medium text-3xl my-4 text-center text-gray-900 ">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+        <div class="absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+          <h1 class="font-dmserif text-4xl font-bold text-white">
             Brand : {catagory?.catagory}
-          </h2>
+          </h1>
           <Link to={`/catagory/${catagory?.catagory}`}>
-            <button className="block w-full rounded bg-purple-600 px-12 py-3 text-center font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500 ">
+            <button class="rounded-lg bg-purple-900 py-3 px-5 font-com mt-5 capitalize text-white shadow shadow-black/60">
               See All
             </button>
           </Link>

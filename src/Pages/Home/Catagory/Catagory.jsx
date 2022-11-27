@@ -23,7 +23,7 @@ const Catagory = () => {
         Our Catagory
       </h1>
 
-      <div className="mt-7 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-[85%] m-auto gap-11">
+      <div className="mt-7 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-[80%] m-auto gap-11">
         {catagories?.map((catagory, indexd) => (
           <CatagoryCard key={indexd} catagory={catagory} />
         ))}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../../context/AuthProvider/AuthProvider";
@@ -13,7 +13,11 @@ const MyProduct = () => {
   } = useQuery({
     queryKey: ["myProducts"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/product/${user?.email}`);
+      const res = await fetch(`http://localhost:5000/product/${user?.email}`, {
+        headers: {
+          authorization: `berarer ${localStorage.getItem("user-token")}`,
+        },
+      });
       const data = await res.json();
       return data;
     },
@@ -24,6 +28,9 @@ const MyProduct = () => {
     if (aggre) {
       fetch(`http://localhost:5000/products/${id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `berarer ${localStorage.getItem("user-token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {
@@ -39,6 +46,9 @@ const MyProduct = () => {
   const handleAdvertice = (advertiseId) => {
     fetch(`http://localhost:5000/advertiseProducts/${advertiseId}`, {
       method: "PUT",
+      headers: {
+        authorization: `berarer ${localStorage.getItem("user-token")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

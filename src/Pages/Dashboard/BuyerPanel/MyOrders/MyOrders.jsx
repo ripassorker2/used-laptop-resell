@@ -8,9 +8,11 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user.email) {
-      fetch(`http://localhost:5000/buying/${user?.email}`).then((res) =>
-        res.json().then((data) => setMyOrders(data))
-      );
+      fetch(`http://localhost:5000/buying/${user?.email}`, {
+        headers: {
+          authorization: `berarer ${localStorage.getItem("user-token")}`,
+        },
+      }).then((res) => res.json().then((data) => setMyOrders(data)));
     }
   }, [user?.email]);
 

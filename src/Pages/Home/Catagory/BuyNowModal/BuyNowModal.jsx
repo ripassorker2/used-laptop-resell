@@ -40,6 +40,7 @@ const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `berarer ${localStorage.getItem("user-token")}`,
       },
       body: JSON.stringify(buyingInfo),
     })
