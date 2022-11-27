@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
   const {
@@ -15,6 +16,7 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
     sellerName,
     sellerImg,
   } = catagoryDetail;
+  console.log(catagoryDetail);
 
   const handleReportd = (id) => {
     console.log(id);
@@ -26,7 +28,9 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
         method: "PUT",
       })
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+          toast.success("Reported succesfully..!");
+        })
         .catch((err) => console.error(err));
     }
   };
@@ -77,7 +81,7 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
             <div className="flex items-center">
               <div className="flex items-center">
                 <img
-                  className="object-cover h-10 rounded-full"
+                  className="object-cover h-10 w-10 rounded-full"
                   src={sellerImg}
                   alt=""
                 />

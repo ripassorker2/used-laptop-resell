@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import AdvertiseCard from "./AdvertiseCard";
+import Loader from "../../../utilities/Loader";
+import AdvertiseModal from "./AdvertiseModal";
 
 const Advertise = () => {
-  const { data: advertises = [], refetch } = useQuery({
+  const [advertiseDetails, setAdvertiseDetails] = useState(null);
+  const {
+    data: advertises = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["edvertise"],
-    queryFn: () =>
-      fetch(`http://localhost:5000/advertise`).then((res) => res.json()),
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/advertise`);
+      const data = await res.json();
+      return data;
+    },
   });
+
+  if (isLoading) {
+    return <Loader />;
+  }
+  console.log(advertiseDetails);
 
   console.log(advertises);
   return (
@@ -18,9 +33,19 @@ const Advertise = () => {
 
       <div className=" px-16 grid md:w-[90%] mx-auto gap-6 lg:grid-cols-2 grid-cols-1">
         {advertises?.map((advertise, index) => (
-          <AdvertiseCard key={index} advertise={advertise} />
+          <AdvertiseCard
+            key={index}
+            advertise={advertise}
+            setAdvertiseDetails={setAdvertiseDetails}
+          />
         ))}
       </div>
+      {advertiseDetails && (
+        <AdvertiseModal
+          advertiseDetails={advertiseDetails}
+          setAdvertiseDetails={setAdvertiseDetails}
+        />
+      )}
     </div>
   );
 };

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
-const AdvertiseCard = ({ advertise }) => {
+const AdvertiseCard = ({ advertise, setAdvertiseDetails }) => {
+  const { user } = useContext(AuthContext);
   const {
     productName,
     description,
@@ -15,6 +19,23 @@ const AdvertiseCard = ({ advertise }) => {
     sellerName,
     sellerImg,
   } = advertise;
+
+  const handleReportd = (id) => {
+    console.log(id);
+    const agree = window.confirm(
+      "Are you sure ? You want to report this product?"
+    );
+    if (agree) {
+      fetch(`http://localhost:5000/report/${id}`, {
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast.success("Reported succesfully..!");
+        })
+        .catch((err) => console.error(err));
+    }
+  };
 
   return (
     <div>
@@ -63,7 +84,7 @@ const AdvertiseCard = ({ advertise }) => {
               <div className="flex items-center">
                 <div className="flex items-center">
                   <img
-                    className="object-cover h-10 rounded-full"
+                    className="object-cover h-10 w-10 rounded-full"
                     src={sellerImg}
                     alt=""
                   />
@@ -76,19 +97,30 @@ const AdvertiseCard = ({ advertise }) => {
                 </span>
               </div>
               <div className="flex justify-end items-end">
-                <button
-                  // onClick={() => handleReportd(catagoryDetail?._id)}
-                  className="btn btn-secondary btn-sm mr-4"
-                >
-                  Report to Admin
-                </button>
-                <label
-                  htmlFor="buy-now-modal"
-                  // onClick={() => setCatagoryDetailInfo(catagoryDetail)}
-                  className="inline-block text-center rounded-md  bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500"
-                >
-                  Buy Now
-                </label>
+                {user?.uid && (
+                  <button
+                    onClick={() => handleReportd(advertise?._id)}
+                    className="btn btn-secondary btn-sm mr-4"
+                  >
+                    Report to Admin
+                  </button>
+                )}
+                {user?.uid ? (
+                  <label
+                    htmlFor="advertise-modal"
+                    onClick={() => setAdvertiseDetails(advertise)}
+                    className="inline-block text-center rounded-md  bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500"
+                  >
+                    Buy Now
+                  </label>
+                ) : (
+                  <h3 className="text-lg font-semibold text-purple-600">
+                    For booking this product you must login frist .{" "}
+                    <Link to="/login" className="underline">
+                      Login now
+                    </Link>
+                  </h3>
+                )}
               </div>
             </div>
           </div>

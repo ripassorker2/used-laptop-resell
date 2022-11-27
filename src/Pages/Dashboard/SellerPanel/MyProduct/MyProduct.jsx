@@ -36,13 +36,18 @@ const MyProduct = () => {
     }
   };
 
-  const advertice = (advertiseId) => {
+  const handleAdvertice = (advertiseId) => {
     console.log(advertiseId);
-    fetch(`http://localhost:5000/advertise/${advertiseId}`, {
-      method: "POST",
+    fetch(`http://localhost:5000/advertiseProducts/${advertiseId}`, {
+      method: "PUT",
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Product added in advertise ...!!");
+          refetch();
+        }
+      })
       .catch((err) => console.error(err));
   };
 
@@ -87,7 +92,8 @@ const MyProduct = () => {
                   <td>
                     {myProduct?.status === "available" ? (
                       <button
-                        onClick={() => advertice(myProduct?._id)}
+                        disabled={myProduct?.advertise}
+                        onClick={() => handleAdvertice(myProduct?._id)}
                         className="btn btn-sm"
                       >
                         Advertise
