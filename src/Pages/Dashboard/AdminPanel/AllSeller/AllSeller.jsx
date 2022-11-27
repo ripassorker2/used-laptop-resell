@@ -86,7 +86,7 @@ const AllSeller = () => {
                     </td>
                     <td>
                       {" "}
-                      {allSeller?.name}{" "}
+                      {allSeller?.name}
                       {allSeller.verify && (
                         <TiTick
                           size={19}

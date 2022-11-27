@@ -99,7 +99,7 @@ const AdvertiseCard = ({ advertise, setAdvertiseDetails }) => {
                 {user?.uid && (
                   <button
                     onClick={() => handleReportd(advertise?._id)}
-                    className="btn btn-secondary btn-sm mr-4"
+                    className="btn btn-primary btn-sm mr-4"
                   >
                     Report to Admin
                   </button>
@@ -110,7 +110,7 @@ const AdvertiseCard = ({ advertise, setAdvertiseDetails }) => {
                     onClick={() => setAdvertiseDetails(advertise)}
                     className="inline-block text-center rounded-md  bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500"
                   >
-                    Buy Now
+                    Booking Now
                   </label>
                 ) : (
                   <h3 className="text-lg font-semibold text-purple-600">

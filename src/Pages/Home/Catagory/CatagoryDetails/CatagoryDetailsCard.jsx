@@ -94,7 +94,7 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
             <div className="flex justify-end items-end">
               <button
                 onClick={() => handleReportd(catagoryDetail?._id)}
-                className="btn btn-secondary btn-sm mr-4"
+                className="btn btn-primary btn-sm mr-4"
               >
                 Report to Admin
               </button>
@@ -103,7 +103,7 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
                 onClick={() => setCatagoryDetailInfo(catagoryDetail)}
                 className="inline-block text-center rounded-md  bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500"
               >
-                Buy Now
+                Booking Now
               </label>
             </div>
           </div>
