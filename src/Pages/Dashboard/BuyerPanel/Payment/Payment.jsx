@@ -7,7 +7,7 @@ const Payment = () => {
 
   return (
     <div>
-      <h2 className="md:text-4xl text-3xl font-semibold text-center text-purple-600 mt-9 mb-6">
+      <h2 className="md:text-5xl text-3xl font-semibold text-center text-purple-600 mt-9 mb-6">
         Pay Here
       </h2>
       <p className="text-center text-xl ">

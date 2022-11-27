@@ -18,8 +18,8 @@ const Catagory = () => {
   }
 
   return (
-    <div className="my-20">
-      <h1 className="text-center pb-4  text-purple-600 font-semibold md:text-4xl text-3xl">
+    <div className="my-14">
+      <h1 className="text-center pb-4  text-purple-600 font-semibold md:text-5xl text-3xl">
         Our Catagory
       </h1>
 

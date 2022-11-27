@@ -4,9 +4,9 @@ const Contact = () => {
   return (
     <div>
       <div>
-        <div className="container my-24 px-6 mx-auto">
+        <div className="container  px-6 mx-auto">
           <section className="mb-32 text-gray-800">
-            <h1 className="md:text-4xl text-3xl text-purple-600 font-bold text-center">
+            <h1 className="md:text-5xl  text-3xl text-purple-600 font-bold text-center">
               Contact Us
             </h1>
             <div className="relative overflow-hidden bg-no-repeat bg-cover"></div>

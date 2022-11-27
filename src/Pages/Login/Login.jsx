@@ -36,32 +36,32 @@ const Login = () => {
   const handleGoogleSignin = () => {
     signInWithGoogle().then((result) => {
       const user = result.user;
-      saveUserSocialLogin(user?.displayName, user?.email, user?.photoURL);
+      // saveUserSocialLogin(user?.displayName, user?.email, user?.photoURL);
       setLoginEmail(user.email);
       toast.success("Login succesfully....!");
     });
   };
 
-  const saveUserSocialLogin = (name, email, image) => {
-    const user = {
-      name: name,
-      email: email,
-      role: "Buyer",
-      image: image,
-    };
-    fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setLoginEmail(email);
-      })
-      .catch((error) => console.error(error));
-  };
+  // const saveUserSocialLogin = (name, email, image) => {
+  //   const user = {
+  //     name: name,
+  //     email: email,
+  //     role: "Buyer",
+  //     image: image,
+  //   };
+  //   fetch("http://localhost:5000/users", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setLoginEmail(email);
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
   return (
     <div className="flex justify-center items-center pt-8">

@@ -57,8 +57,8 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="text-base">Description :</span>{" "}
-              {description.length > 150
-                ? description.slice(0, 150) + "....."
+              {description.length > 10
+                ? description.slice(0, 140) + "....."
                 : description}
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">

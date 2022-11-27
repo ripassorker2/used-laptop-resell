@@ -35,7 +35,7 @@ const AllBuyer = () => {
   return (
     <div>
       <div>
-        <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
+        <h1 className=" md:text-5xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
           {allBuyers.length
             ? " All Buyers"
             : "There Are No Buyers Available !!"}

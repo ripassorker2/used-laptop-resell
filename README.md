@@ -1,7 +1,7 @@
 ## Project Name: Used Laptop
 
-- [Live Link](https://service-review-assigment.web.app/)
-- [GitHub Server Code Link](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-ripassorker2)
+- [Live Link](https://resale-laptop.web.app/)
+- [GitHub Server Code Link](https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-ripassorker2)
 
 ## Some steps for create this website
 

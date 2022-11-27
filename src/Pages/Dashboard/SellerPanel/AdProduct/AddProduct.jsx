@@ -88,7 +88,7 @@ const AddProduct = () => {
         <form onSubmit={handleProduct}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
-              <label className="text-gray-800" for="name">
+              <label className="text-gray-800" htmlFor="name">
                 Seller Name
               </label>
               <input
@@ -96,13 +96,14 @@ const AddProduct = () => {
                 name="name"
                 defaultValue={user?.displayName}
                 disabled
+                required
                 readOnly
                 type="text"
                 className="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-300 rounded-md  focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label className="text-gray-800" for="emailAddress">
+              <label className="text-gray-800" htmlFor="emailAddress">
                 Seller Email
               </label>
               <input
@@ -111,41 +112,45 @@ const AddProduct = () => {
                 name="email"
                 defaultValue={user?.email}
                 disabled
+                required
                 readOnly
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label className="text-gray-800" for="product">
+              <label className="text-gray-800" htmlFor="product">
                 Product Name
               </label>
               <input
                 id="product"
                 type="text"
                 name="product"
+                required
                 placeholder="Product Name"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label className="text-gray-800" for="price">
+              <label className="text-gray-800" htmlFor="price">
                 Resale Price
               </label>
               <input
                 id="price"
                 type="number"
+                required
                 name="price"
                 placeholder="Price"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label className="text-gray-800" for="useTime">
+              <label className="text-gray-800" htmlFor="useTime">
                 Used Time
               </label>
               <input
                 id="useTime"
                 type="text"
+                required
                 name="useTime"
                 placeholder="Used time"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
@@ -153,55 +158,59 @@ const AddProduct = () => {
             </div>
 
             <div>
-              <label className="text-gray-800" for="purchase">
+              <label className="text-gray-800" htmlFor="purchase">
                 Original Price
               </label>
               <input
                 id="purchase"
                 type="number"
+                required
                 name="purchase"
                 placeholder="Original price"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label className="text-gray-800" for="useTime">
+              <label className="text-gray-800" htmlFor="useTime">
                 Purches Year
               </label>
               <input
                 id="year"
                 type="date"
+                required
                 name="purchesYear"
                 placeholder="Purches Year"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label className="text-gray-800" for="location">
+              <label className="text-gray-800" htmlFor="location">
                 Location
               </label>
               <input
                 id="location"
                 type="text"
+                required
                 name="location"
                 placeholder="Location"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label className="text-gray-800" for="phone">
+              <label className="text-gray-800" htmlFor="phone">
                 Seller Phone Number
               </label>
               <input
                 id="phone"
                 type="number"
                 name="phone"
+                required
                 placeholder="Seller Phone Number"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label className="text-gray-800" for="quality">
+              <label className="text-gray-800" htmlFor="quality">
                 Product Quality
               </label>
               <select
@@ -214,7 +223,7 @@ const AddProduct = () => {
               </select>
             </div>
             <div>
-              <label className="text-gray-800" for="category">
+              <label className="text-gray-800" htmlFor="category">
                 Category
               </label>
               <select
@@ -228,24 +237,26 @@ const AddProduct = () => {
             </div>
 
             <div>
-              <label className="text-gray-800" for="photo">
+              <label className="text-gray-800" htmlFor="photo">
                 Photo
               </label>
               <input
                 id="photo"
                 type="file"
+                required
                 name="productPhoto"
                 className="block w-full px-4 py-1.5 mt-2 text-gray-700 bg-white border rounded-md     border-gray-600 focus:border-blue-400   focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
           </div>
           <div>
-            <label className="text-gray-800" for="passwordConfirmation">
+            <label className="text-gray-800" htmlFor="passwordConfirmation">
               Description
             </label>
             <textarea
               id="description"
               type="textarea"
+              required
               name="description"
               placeholder="Description"
               className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500 focus:outline-none focus:ring"
