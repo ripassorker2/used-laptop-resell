@@ -5,7 +5,7 @@ const Bannar = () => {
   return (
     <div>
       <div className="-z-20">
-        <section className="relative bg-[url(https://d3m9l0v76dty0.cloudfront.net/system/photos/6731538/original/88fd2ca4400835bf74f12070e580b70e.jpg)] h-[600px] bg-cover bg-center bg-no-repeat">
+        <section className="relative bg-[url(https://media.loom-app.com/gizmodo/dist/images/2018/12/03/1811203-MacBookAir-top.jpg?w=1280)]  bg-cover bg-center bg-no-repeat">
           <div className="absolute inset-0  bg-transparent bg-gradient-to-r from-black/70 to-white/25"></div>
 
           <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
@@ -19,10 +19,11 @@ const Bannar = () => {
               </h1>
 
               <p className="mt-4 max-w-lg sm:text-base text-gray-200 sm:leading-relaxed">
-                Tourism, the act and process of spending time away from home in
-                pursuit of recreation, relaxation, and pleasure, while making
-                use of the commercial provision of services. As such, tourism is
-                a product of modern social
+                Global Sources offers with a wide range of quality products,
+                sourced directly from Asia. Source for high quality products at
+                competitive price from Verified Suppliers now. Vertical Focus
+                Expertise. 10,000,000+ Buyers. Verified Suppliers. 50+ Years of
+                Experience.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4 text-center">

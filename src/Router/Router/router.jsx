@@ -15,7 +15,10 @@ import CatagoryDetails from "../../Pages/Home/Catagory/CatagoryDetails/CatagoryD
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Resister from "../../Pages/Resister/Resister";
+import AdminRouter from "../AdminRouter/AdminRouter";
+import BuyerRouter from "../BuyerRouter/BuyerRouter";
 import PrivetRouter from "../PrivetRouter/PrivetRouter";
+import SellerRouter from "../SellerRouter/SellerRouter";
 
 export const router = createBrowserRouter([
   {
@@ -70,17 +73,15 @@ export const router = createBrowserRouter([
         path: "/dashboard/myOrders",
         element: (
           <PrivetRouter>
-            <MyOrders />
+            <BuyerRouter>
+              <MyOrders />
+            </BuyerRouter>
           </PrivetRouter>
         ),
       },
       {
         path: "/dashboard/myOrders/payment/:id",
-        element: (
-          <PrivetRouter>
-            <Payment />
-          </PrivetRouter>
-        ),
+        element: <Payment />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/buyingPayment/${params.id}`),
       },
@@ -88,7 +89,9 @@ export const router = createBrowserRouter([
         path: "/dashboard/addProducts",
         element: (
           <PrivetRouter>
-            <AddProduct />
+            <SellerRouter>
+              <AddProduct />
+            </SellerRouter>
           </PrivetRouter>
         ),
       },
@@ -96,7 +99,9 @@ export const router = createBrowserRouter([
         path: "/dashboard/myProduct",
         element: (
           <PrivetRouter>
-            <MyProduct />
+            <SellerRouter>
+              <MyProduct />
+            </SellerRouter>
           </PrivetRouter>
         ),
       },
@@ -104,7 +109,9 @@ export const router = createBrowserRouter([
         path: "/dashboard/allBuyers",
         element: (
           <PrivetRouter>
-            <AllBuyer />
+            <AdminRouter>
+              <AllBuyer />
+            </AdminRouter>
           </PrivetRouter>
         ),
       },
@@ -112,7 +119,9 @@ export const router = createBrowserRouter([
         path: "/dashboard/allSellers",
         element: (
           <PrivetRouter>
-            <AllSeller />
+            <AdminRouter>
+              <AllSeller />
+            </AdminRouter>
           </PrivetRouter>
         ),
       },
@@ -120,7 +129,9 @@ export const router = createBrowserRouter([
         path: "/dashboard/reported",
         element: (
           <PrivetRouter>
-            <ReportedProduct />
+            <AdminRouter>
+              <ReportedProduct />
+            </AdminRouter>
           </PrivetRouter>
         ),
       },

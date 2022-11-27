@@ -43,7 +43,7 @@ const Resister = () => {
             const user = result.user;
             setCreatedEmail(user.email);
             saveUser(name, email, role, imageInfo.data.display_url);
-
+            setCreatedEmail(email);
             updateUserProfile(name, imageInfo.data.display_url)
               .then((data) => {
                 navigate("/");
@@ -61,8 +61,10 @@ const Resister = () => {
 
   const handleGoogleSignin = () => {
     signInWithGoogle().then((result) => {
+      const user = result.user;
+      saveUserSocialLogin(user?.displayName, user?.email, user?.photoURL);
       toast.success("Login succesfully ...!");
-      setCreatedEmail(result.user.email);
+      setCreatedEmail(user?.email);
     });
   };
 
@@ -85,6 +87,26 @@ const Resister = () => {
         if (data.acknowledged) {
           toast.success("Created user succesfully...!");
         }
+        setCreatedEmail(email);
+      })
+      .catch((error) => console.error(error));
+  };
+  const saveUserSocialLogin = (name, email, image) => {
+    const user = {
+      name: name,
+      email: email,
+      role: "Buyer",
+      image: image,
+    };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
         setCreatedEmail(email);
       })
       .catch((error) => console.error(error));

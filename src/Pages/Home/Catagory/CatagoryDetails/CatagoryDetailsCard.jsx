@@ -16,10 +16,8 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
     sellerName,
     sellerImg,
   } = catagoryDetail;
-  console.log(catagoryDetail);
 
   const handleReportd = (id) => {
-    console.log(id);
     const agree = window.confirm(
       "Are you sure ? You want to report this product?"
     );
@@ -36,7 +34,7 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
   };
 
   return (
-    <div className="my-11 mb-16 border-2">
+    <div className="my-10 border-2">
       <div className="max-w-2xl overflow-hidden bg-white shadow-xl rounded-lg dark:bg-gray-800">
         <img
           className="object-cover w-full h-72 border"
@@ -60,7 +58,7 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="text-base">Description :</span>{" "}
               {description.length > 150
-                ? description.slice(0, 160) + "....."
+                ? description.slice(0, 150) + "....."
                 : description}
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">

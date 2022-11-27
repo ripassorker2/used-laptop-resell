@@ -5,12 +5,12 @@ import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 import useToken from "../../utilities/useToken";
 
 const Login = () => {
+  const [loginEmail, setLoginEmail] = useState("");
   const { signin, setLoading, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const [loginEmail, setLoginEmail] = useState("");
   const token = useToken(loginEmail);
   if (token) {
     navigate(from, { replace: true });
@@ -35,10 +35,32 @@ const Login = () => {
 
   const handleGoogleSignin = () => {
     signInWithGoogle().then((result) => {
-      setLoginEmail(result.user.email);
-      navigate(from, { replace: true });
+      const user = result.user;
+      saveUserSocialLogin(user?.displayName, user?.email, user?.photoURL);
+      setLoginEmail(user.email);
       toast.success("Login succesfully....!");
     });
+  };
+
+  const saveUserSocialLogin = (name, email, image) => {
+    const user = {
+      name: name,
+      email: email,
+      role: "Buyer",
+      image: image,
+    };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoginEmail(email);
+      })
+      .catch((error) => console.error(error));
   };
 
   return (

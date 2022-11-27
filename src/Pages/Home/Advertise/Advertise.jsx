@@ -22,9 +22,7 @@ const Advertise = () => {
   if (isLoading) {
     return <Loader />;
   }
-  console.log(advertiseDetails);
 
-  console.log(advertises);
   return (
     <div>
       <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-600 capitalize">

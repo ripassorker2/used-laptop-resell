@@ -12,7 +12,7 @@ const CheekOutFrom = ({ productData }) => {
 
   const { buyerName, resalePrice, buyeremail, _id, productId, advertise } =
     productData;
-  console.log(productData);
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -50,7 +50,6 @@ const CheekOutFrom = ({ productData }) => {
 
     if (error) {
       setCardError(error.message);
-      console.log(error);
     } else {
       setCardError("");
     }
@@ -70,7 +69,6 @@ const CheekOutFrom = ({ productData }) => {
     if (confirmError) {
       return setCardError(confirmError.message);
     }
-    // console.log(paymentMethod);
     if (paymentIntent?.status === "succeeded") {
       toast.success("Payment succesfully");
 
@@ -93,7 +91,6 @@ const CheekOutFrom = ({ productData }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.insertedId) {
             setSuccess("Congrats! your payment completed");
             setTransactionId(paymentIntent.id);

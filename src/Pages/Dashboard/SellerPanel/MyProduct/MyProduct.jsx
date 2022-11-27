@@ -37,7 +37,6 @@ const MyProduct = () => {
   };
 
   const handleAdvertice = (advertiseId) => {
-    console.log(advertiseId);
     fetch(`http://localhost:5000/advertiseProducts/${advertiseId}`, {
       method: "PUT",
     })

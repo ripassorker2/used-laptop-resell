@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 const CatagoryCard = ({ catagory }) => {
   return (
     <div>
-      <div className="shadow-lg w-[350px]">
+      <div className="shadow-lg w-[350px] ">
         <div className=" border  px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
-          <img src={catagory?.picture} alt="" className="rounded-lg border " />
+          <img
+            src={catagory?.picture}
+            alt=""
+            className="rounded-lg border h-44 w-full "
+          />
           <h2 className="title-font font-medium text-3xl my-4 text-center text-gray-900 ">
             Brand : {catagory?.catagory}
           </h2>

@@ -31,7 +31,6 @@ const AllSeller = () => {
   };
 
   const handleVerified = (id) => {
-    // console.log(id);
     fetch(`http://localhost:5000/verify/${id}`, {
       method: "PUT",
     })

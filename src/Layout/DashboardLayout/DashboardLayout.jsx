@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../../Pages/Shared/Footer/Footer";
 import Navbar from "../../Pages/Shared/Navbar/Navbar";
@@ -9,21 +9,28 @@ import { FaSellsy } from "react-icons/fa";
 import { MdOutlineReport } from "react-icons/md";
 import { GiBuyCard } from "react-icons/gi";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import useRole from "../../utilities/useRole";
+import Loader from "../../utilities/Loader";
 
 const DashboardLayout = () => {
   const [open, setOpen] = useState(true);
   const { user } = useContext(AuthContext);
-  const [isRole, setRole] = useState("");
+  // const [isRole, setRole] = useState("");
 
-  useEffect(() => {
-    if (user?.email) {
-      fetch(`http://localhost:5000/users/${user?.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setRole(data?.role);
-        });
-    }
-  }, [user?.email]);
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     fetch(`http://localhost:5000/users/${user?.email}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setRole(data?.role);
+  //       });
+  //   }
+  // }, [user?.email]);
+  const [isRole, isLoadingRole] = useRole(user?.email);
+  console.log(isRole);
+  if (isLoadingRole) {
+    return <Loader />;
+  }
 
   return (
     <div>
