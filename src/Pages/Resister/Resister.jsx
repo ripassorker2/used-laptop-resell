@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -12,9 +12,12 @@ const Resister = () => {
 
   const [createdEmail, setCreatedEmail] = useState("");
   const token = useToken(createdEmail);
-  if (token) {
-    navigate("/");
-  }
+
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -65,6 +68,7 @@ const Resister = () => {
       saveUserSocialLogin(user?.displayName, user?.email, user?.photoURL);
       toast.success("Login succesfully ...!");
       setCreatedEmail(user?.email);
+      setLoading(false);
     });
   };
 

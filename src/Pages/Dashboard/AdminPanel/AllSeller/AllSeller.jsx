@@ -34,8 +34,8 @@ const AllSeller = () => {
     }
   };
 
-  const handleVerified = (id) => {
-    fetch(`http://localhost:5000/verify/${id}`, {
+  const handleVerified = (email) => {
+    fetch(`http://localhost:5000/verify/${email}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("user-token")}`,
@@ -105,7 +105,7 @@ const AllSeller = () => {
                       ) : (
                         <>
                           <button
-                            onClick={() => handleVerified(allSeller?._id)}
+                            onClick={() => handleVerified(allSeller?.email)}
                             className="btn btn-sm btn-primary"
                           >
                             Verify

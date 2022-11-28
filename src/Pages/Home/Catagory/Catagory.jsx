@@ -1,21 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import Loader from "../../../utilities/Loader";
+import React, { useEffect, useState } from "react";
 import CatagoryCard from "./CatagoryCard";
+import axios from "axios";
 
 const Catagory = () => {
-  const { data: catagories = [], isLoading } = useQuery({
-    queryKey: ["catagories"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/catagory");
-      const data = await res.json();
-      return data;
-    },
-  });
+  const [catagories, setCatagories] = useState([]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/catagory")
+      .then((res) => setCatagories(res.data));
+  }, []);
 
   return (
     <div className="my-14">

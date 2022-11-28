@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
@@ -12,9 +12,11 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const token = useToken(loginEmail);
-  if (token) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
