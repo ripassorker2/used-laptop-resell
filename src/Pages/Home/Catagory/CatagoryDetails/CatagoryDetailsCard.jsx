@@ -22,7 +22,7 @@ const CatagoryDetailsCard = ({ catagoryDetail, setCatagoryDetailInfo }) => {
       "Are you sure ? You want to report this product?"
     );
     if (agree) {
-      fetch(`http://localhost:5000/report/${id}`, {
+      fetch(`https://resale-laptop-server.vercel.app/report/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())

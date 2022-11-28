@@ -36,7 +36,7 @@ const BuyNowModal = ({ catagoryDetailInfo, setCatagoryDetailInfo }) => {
       advertise,
     };
 
-    fetch("http://localhost:5000/buying", {
+    fetch("https://resale-laptop-server.vercel.app/buying", {
       method: "POST",
       headers: {
         "content-type": "application/json",

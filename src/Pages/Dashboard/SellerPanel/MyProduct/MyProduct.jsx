@@ -13,11 +13,14 @@ const MyProduct = () => {
   } = useQuery({
     queryKey: ["myProducts"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/product/${user?.email}`, {
-        headers: {
-          authorization: `berarer ${localStorage.getItem("user-token")}`,
-        },
-      });
+      const res = await fetch(
+        `https://resale-laptop-server.vercel.app/product/${user?.email}`,
+        {
+          headers: {
+            authorization: `berarer ${localStorage.getItem("user-token")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },
@@ -26,7 +29,7 @@ const MyProduct = () => {
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to delete this?");
     if (aggre) {
-      fetch(`http://localhost:5000/products/${id}`, {
+      fetch(`https://resale-laptop-server.vercel.app/products/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `berarer ${localStorage.getItem("user-token")}`,
@@ -44,12 +47,15 @@ const MyProduct = () => {
   };
 
   const handleAdvertice = (advertiseId) => {
-    fetch(`http://localhost:5000/advertiseProducts/${advertiseId}`, {
-      method: "PUT",
-      headers: {
-        authorization: `berarer ${localStorage.getItem("user-token")}`,
-      },
-    })
+    fetch(
+      `https://resale-laptop-server.vercel.app/advertiseProducts/${advertiseId}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `berarer ${localStorage.getItem("user-token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

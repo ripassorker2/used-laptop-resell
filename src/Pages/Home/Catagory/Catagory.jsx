@@ -7,7 +7,7 @@ const Catagory = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/catagory")
+      .get("https://resale-laptop-server.vercel.app/catagory")
       .then((res) => setCatagories(res.data));
   }, []);
 

@@ -7,7 +7,7 @@ const AllSeller = () => {
   const { data: allSellers = [], refetch } = useQuery({
     queryKey: ["allBuyers"],
     queryFn: () =>
-      fetch(`http://localhost:5000/allSellers`, {
+      fetch(`https://resale-laptop-server.vercel.app/allSellers`, {
         headers: {
           authorization: `bearer ${localStorage.getItem("user-token")}`,
         },
@@ -17,7 +17,7 @@ const AllSeller = () => {
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to delete this?");
     if (aggre) {
-      fetch(`http://localhost:5000/buyerOrSeller/${id}`, {
+      fetch(`https://resale-laptop-server.vercel.app/buyerOrSeller/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `berarer ${localStorage.getItem("user-token")}`,
@@ -35,7 +35,7 @@ const AllSeller = () => {
   };
 
   const handleVerified = (email) => {
-    fetch(`http://localhost:5000/verify/${email}`, {
+    fetch(`https://resale-laptop-server.vercel.app/verify/${email}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("user-token")}`,

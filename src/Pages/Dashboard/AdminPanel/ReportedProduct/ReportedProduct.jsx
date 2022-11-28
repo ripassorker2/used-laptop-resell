@@ -11,11 +11,14 @@ const ReportedProduct = () => {
   } = useQuery({
     queryKey: ["reportedProducts"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/reportProduct`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("user-token")}`,
-        },
-      });
+      const res = await fetch(
+        `https://resale-laptop-server.vercel.app/reportProduct`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("user-token")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },
@@ -24,7 +27,7 @@ const ReportedProduct = () => {
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to delete this?");
     if (aggre) {
-      fetch(`http://localhost:5000/products/${id}`, {
+      fetch(`https://resale-laptop-server.vercel.app/products/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `bearer ${localStorage.getItem("user-token")}`,

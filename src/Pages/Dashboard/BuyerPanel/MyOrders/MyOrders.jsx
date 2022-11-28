@@ -8,7 +8,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user.email) {
-      fetch(`http://localhost:5000/buying/${user?.email}`, {
+      fetch(`https://resale-laptop-server.vercel.app/buying/${user?.email}`, {
         headers: {
           authorization: `berarer ${localStorage.getItem("user-token")}`,
         },

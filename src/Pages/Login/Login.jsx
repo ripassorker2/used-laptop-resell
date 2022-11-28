@@ -51,7 +51,7 @@ const Login = () => {
   //     role: "Buyer",
   //     image: image,
   //   };
-  //   fetch("http://localhost:5000/users", {
+  //   fetch("https://resale-laptop-server.vercel.app/users", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",
