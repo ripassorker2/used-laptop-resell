@@ -53,7 +53,6 @@ const AllSeller = () => {
 
   return (
     <div>
-      {" "}
       <div>
         <h1 className=" md:text-5xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
           {allSellers.length

@@ -39,7 +39,7 @@ const AdvertiseCard = ({ advertise, setAdvertiseDetails }) => {
   return (
     <div>
       <div className="my-10  border-2">
-        <div className="max-w-2xl overflow-hidden bg-white shadow-xl rounded-lg">
+        <div className=" overflow-hidden bg-white shadow-xl rounded-lg">
           <img
             className="object-cover w-full h-72 border"
             src={productImage}

@@ -29,7 +29,7 @@ const Advertise = () => {
             Advertise Products
           </h1>
 
-          <div className=" px-16 grid md:w-[90%] mx-auto gap-6 lg:grid-cols-2 grid-cols-1">
+          <div className=" px-6 grid md:w-[90%] w-[95%] mx-auto gap-6 lg:grid-cols-2 grid-cols-1">
             {advertises?.map((advertise, index) => (
               <AdvertiseCard
                 key={index}
