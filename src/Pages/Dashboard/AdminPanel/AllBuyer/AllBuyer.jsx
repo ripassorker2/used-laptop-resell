@@ -41,8 +41,8 @@ const AllBuyer = () => {
             : "There Are No Buyers Available !!"}
         </h1>
         {allBuyers && (
-          <div className="overflow-x-auto mt-9">
-            <table className="table w-[90%] m-auto">
+          <div className="overflow-x-auto mt-9 ">
+            <table className="table w-[90%] m-auto bg-white ">
               <thead>
                 <tr>
                   <th>Si No</th>

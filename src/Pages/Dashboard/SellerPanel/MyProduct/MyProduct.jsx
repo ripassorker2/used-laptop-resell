@@ -70,7 +70,7 @@ const MyProduct = () => {
     return <Loader />;
   }
   return (
-    <div>
+    <div className=" my-5">
       <h1 className=" md:text-4xl mt-7 text-3xl text-center font-semibold text-purple-800 capitalize">
         {myProducts.length
           ? " My Products"

@@ -5,7 +5,7 @@ const Contact = () => {
     <div>
       <div>
         <div className="container  px-6 mx-auto">
-          <section className="mb-32 text-gray-800">
+          <section className="mb-32 text-gray-100">
             <h1 className="md:text-5xl  text-3xl text-purple-600 font-bold text-center">
               Contact Us
             </h1>

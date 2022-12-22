@@ -81,7 +81,7 @@ const AddProduct = () => {
   };
   return (
     <div>
-      <section className="p-6  bg-base-100 rounded-md shadow-xl my-16 md:w-[80%]  m-auto">
+      <section className="p-6   rounded-md shadow-xl my-16 md:w-[80%]  m-auto">
         <h1 className=" md:text-5xl text-3xl text-center font-bold text-purple-800 capitalize">
           Add Product
         </h1>

@@ -39,7 +39,7 @@ const AdvertiseCard = ({ advertise, setAdvertiseDetails }) => {
   return (
     <div>
       <div className="my-10  border-2">
-        <div className="max-w-2xl overflow-hidden bg-white shadow-xl rounded-lg dark:bg-gray-800">
+        <div className="max-w-2xl overflow-hidden bg-white shadow-xl rounded-lg">
           <img
             className="object-cover w-full h-72 border"
             src={productImage}
@@ -48,32 +48,32 @@ const AdvertiseCard = ({ advertise, setAdvertiseDetails }) => {
 
           <div className="p-6">
             <div>
-              <h3 className="block mt-2 text-xl font-semibold text-purple-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 ">
+              <h3 className="block mt-2 text-xl font-semibold text-purple-800 transition-colors duration-300 transform  hover:text-gray-600 ">
                 {productName}
               </h3>
 
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-600 ">
                 <span className="text-base text-gray-700">Resale Price : </span>
                 ${resalePrice}
               </p>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-600 ">
                 <span className="text-base">Orginal Price : </span>${price}
               </p>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-600 ">
                 <span className="text-base">Description :</span>{" "}
                 {description.length > 150
                   ? description.slice(0, 140) + "....."
                   : description}
               </p>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-600 ">
                 <span className="text-base">Location : </span>
                 {location}
               </p>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-600">
                 <span className="text-base">Used Time :</span> {useTime}
               </p>
 
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-600">
                 <span className="text-base">Purchase Date : </span>
                 {purchesYear}
               </p>
@@ -87,11 +87,11 @@ const AdvertiseCard = ({ advertise, setAdvertiseDetails }) => {
                     src={sellerImg}
                     alt=""
                   />
-                  <p className="mx-2 font-semibold text-gray-700 dark:text-gray-200">
+                  <p className="mx-2 font-semibold text-gray-600 ">
                     {sellerName}
                   </p>
                 </div>
-                <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
+                <span className="mx-1 text-xs text-gray-600 ">
                   {date} and Time : {time}
                 </span>
               </div>
