@@ -120,7 +120,7 @@ const Navbar = () => {
                           onClick={() => setIsMenuOpen(false)}
                         >
                           <svg
-                            className="w-5 text-gray-600"
+                            className="w-5 text-gray-300"
                             viewBox="0 0 24 24"
                           >
                             <path
@@ -131,58 +131,59 @@ const Navbar = () => {
                         </button>
                       </div>
                     </div>
-                    <nav>
-                      <ul className="space-y-4">
+                    <nav className="text-gray-900">
+                      <ul className="space-y-4 ">
                         <li>
-                          <a
-                            href="/"
+                          <Link
+                            to={"/home"}
                             aria-label="Our product"
                             title="Our product"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                           >
-                            Product
-                          </a>
+                            Home
+                          </Link>
                         </li>
+                        {user?.uid && (
+                          <li>
+                            <Link
+                              to={"/dashboard"}
+                              aria-label="Our product"
+                              title="Our product"
+                              className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
+                            >
+                              Dashboard
+                            </Link>
+                          </li>
+                        )}
                         <li>
-                          <a
-                            href="/"
+                          <Link
+                            to={"/blogs"}
                             aria-label="Our product"
                             title="Our product"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                           >
-                            Features
-                          </a>
+                            Blogs
+                          </Link>
                         </li>
-                        <li>
-                          <a
-                            href="/"
-                            aria-label="Product pricing"
-                            title="Product pricing"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                            Pricing
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="/"
-                            aria-label="About us"
-                            title="About us"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                            About us
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="/"
-                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                            aria-label="Sign up"
-                            title="Sign up"
-                          >
-                            Sign up
-                          </a>
-                        </li>
+                      </ul>
+                      <ul className=" items-center hidden space-x-8 lg:flex">
+                        {user?.uid ? (
+                          <>
+                            <li>
+                              <button onClick={logout} className="btn btn-sm">
+                                Sign Out
+                              </button>
+                            </li>
+                          </>
+                        ) : (
+                          <>
+                            <li>
+                              <Link to={"/login"} className="btn btn-sm">
+                                Sign In
+                              </Link>
+                            </li>
+                          </>
+                        )}
                       </ul>
                     </nav>
                   </div>

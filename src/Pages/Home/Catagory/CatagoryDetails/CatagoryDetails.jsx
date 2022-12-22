@@ -15,7 +15,7 @@ const CatagoryDetails = () => {
             ? " All Products"
             : "There Are No Product Available !!"}
         </h1>
-        <div className=" px-16 grid md:w-[90%] mx-auto gap-6 lg:grid-cols-2 grid-cols-1">
+        <div className=" px-7 grid md:w-[90%] mx-auto gap-6 lg:grid-cols-2 grid-cols-1">
           {catagoryDetails?.map((catagoryDetail, index) => (
             <CatagoryDetailsCard
               key={index}
