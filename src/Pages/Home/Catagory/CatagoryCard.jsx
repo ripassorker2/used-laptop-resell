@@ -5,9 +5,9 @@ const CatagoryCard = ({ catagory }) => {
   return (
     <div>
       <div className="group relative shadow-lg border cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-        <div className="h-96 w-72">
+        <div className="h-96 full">
           <img
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+            className="h-full w-full  duration-500 group-hover:rotate-3 group-hover:scale-125"
             src={catagory?.picture}
             alt=""
           />
